@@ -20,6 +20,7 @@ export const standartButton = () => (
     </Background>
   </>
 );
+
 standartButton.story = {
   parameters: {
     info: {
