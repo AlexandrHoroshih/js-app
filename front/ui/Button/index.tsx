@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { css, cx } from 'linaria';
-import { Button as ReakitButton } from 'reakit/Button';
+import { Button as ReakitButton, ButtonProps } from 'reakit/Button';
 import { darken } from 'polished';
 
 import { MAIN, DARK } from '../../theme/colors';
 
-interface Props {
+interface CustomProps {
   className?: string;
   primary?: boolean;
   expanded?: boolean;
 }
+
+type Props = CustomProps & ButtonProps;
 
 const basicButton = css`
   display: flex;
