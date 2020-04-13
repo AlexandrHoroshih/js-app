@@ -421,3 +421,6 @@ Temporary Items
 docker-compose.yml
 .env
 dist
+
+#linaria
+.linaria-cache
