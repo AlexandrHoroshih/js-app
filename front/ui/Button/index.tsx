@@ -29,7 +29,7 @@ const basicButton = css`
 
   cursor: pointer;
 
-  background: ${MAIN};
+  background: white;
   border: none;
   border-radius: 10px;
   box-shadow: 4px 4px 20px rgba(111, 140, 176, 0.41), -6px -6px 20px #ffffff,
@@ -38,14 +38,9 @@ const basicButton = css`
   &:hover,
   &:focus,
   &:focus-within {
-    background: ${darken(0.02, MAIN)};
+    background: ${darken(0.02, 'white')};
     box-shadow: 2px 2px 10px rgba(111, 140, 176, 0.41), -3px -3px 10px #ffffff,
       1px 1px 2px rgba(114, 142, 171, 0.1);
-  }
-
-  &:focus,
-  &:focus-within {
-    background: ${darken(0.07, MAIN)};
   }
 
   &[disabled] {
@@ -78,18 +73,16 @@ const expandedButton = css`
   padding: 20px 50px;
 `;
 
-export const Button: React.FunctionComponent<Props> = React.memo(
-  (props: Props) => (
-    <ReakitButton
-      {...props}
-      className={cx(
-        basicButton,
-        props.primary && primaryButton,
-        props.expanded && expandedButton,
-        props.className,
-      )}
-    />
-  ),
-);
+export const Button: React.FC<Props> = React.memo((props: Props) => (
+  <ReakitButton
+    {...props}
+    className={cx(
+      basicButton,
+      props.primary && primaryButton,
+      props.expanded && expandedButton,
+      props.className,
+    )}
+  />
+));
 
 Button.displayName = 'Button';

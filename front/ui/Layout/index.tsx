@@ -1,7 +1,14 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { css } from 'linaria';
 
-import { Background } from '../../ui/Background';
+import { Background } from '../Background';
+
+const layout = css`
+  width: 100vw;
+  height: 100vh;
+  padding: 16px;
+`;
 
 interface Props {
   title: string;
@@ -18,6 +25,6 @@ export const Layout: React.FunctionComponent<Props> = ({ title, children }) => (
         rel="stylesheet"
       ></link>
     </Head>
-    <Background>{children}</Background>
+    <Background className={layout}>{children}</Background>
   </>
 );

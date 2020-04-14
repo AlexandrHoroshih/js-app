@@ -1,13 +1,12 @@
-import {Layout} from '../components/Layout';
-import {Button} from '../ui/Button';
+import { Layout } from '../ui/Layout';
+
+import { Test } from '../components/Test';
 
 const Home = () => (
-    <Layout title="main page">
-        {'Hello nextjs'}
-        <Button>
-            button i am
-        </Button>
-    </Layout>
+  <Layout title="main page">
+    {'Hello nextjs'}
+    <Test />
+  </Layout>
 );
 
-export default Home
+export default Home;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Layout } from '.';
 
-import { Button } from '../../ui/Button';
+import { Button } from '../Button';
 
 export default { title: 'Components/Layout' };
 
