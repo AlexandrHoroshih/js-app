@@ -113,7 +113,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         ></link>
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 }
