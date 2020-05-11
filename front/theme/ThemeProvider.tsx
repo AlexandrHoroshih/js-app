@@ -28,6 +28,10 @@ const shadowVars = css`
   --shadow24dp: ${s.shadow24dp};
 `;
 
+const miscVars = css`
+  --b-radius: 6px;
+`;
+
 export const ThemeProvider: React.FC = ({ children }) => {
-  return <Box className={cx(colorVars, shadowVars)}>{children}</Box>;
+  return <Box className={cx(colorVars, shadowVars, miscVars)}>{children}</Box>;
 };
