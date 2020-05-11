@@ -3,6 +3,8 @@ import { css } from 'linaria';
 import { normalize, rem } from 'polished';
 import Head from 'next/head';
 
+import { ThemeProvider } from '../theme/ThemeProvider';
+
 // about normalize.css https://necolas.github.io/normalize.css/
 // transforming polished's version of normalize.css (has type Styles[]) to object, so linaria can convert it into global styles;
 const normalizeCss = normalize().reduce(
@@ -103,7 +105,7 @@ export const globals = css`
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link
@@ -112,6 +114,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         ></link>
       </Head>
       <Component {...pageProps} />;
-    </>
+    </ThemeProvider>
   );
 }
