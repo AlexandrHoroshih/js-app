@@ -21,6 +21,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "^5.4.1",
+    "react-icons": "^3.10.0",
     "reakit": "^1.0.0-rc.0",
     "redaxios": "^0.2.0"
   },
