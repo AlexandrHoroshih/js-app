@@ -15,10 +15,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@ui": ["components/ui/*"],
-      "@features": ["components/features/*"],
-      "@theme": ["theme/*"],
-      "@utils": ["utils/*"]
+      "@/ui/*": ["components/ui/*"],
+      "@/features/*": ["components/features/*"],
+      "@/theme/*": ["theme/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "exclude": ["node_modules"],
