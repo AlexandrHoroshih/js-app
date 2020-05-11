@@ -1,30 +1,106 @@
 import { AppProps } from 'next/app';
 import { css } from 'linaria';
-import { normalize } from 'polished';
+import { normalize, rem } from 'polished';
+import Head from 'next/head';
 
-// transform polished's normalize Styles[] to object, so linaria can convert it into global styles;
+// about normalize.css https://necolas.github.io/normalize.css/
+// transforming polished's version of normalize.css (has type Styles[]) to object, so linaria can convert it into global styles;
 const normalizeCss = normalize().reduce(
   (acc, currentStylesObj) => ({ ...acc, ...currentStylesObj }),
   {},
 );
 
+const BASE_FONT_SIZE = 16; // intended to use with polished's "rem" function, rem's default reference ont size is 16px;
+
 export const globals = css`
   :global() {
+    ${normalizeCss}
+
     html {
       box-sizing: border-box;
+      font-size: ${BASE_FONT_SIZE}px;
     }
 
     *,
     *:before,
     *:after {
       box-sizing: inherit;
+      font-family: 'Roboto', sans-serif;
     }
 
-    ${normalizeCss}
+    h1,
+    .as-h1 {
+      font-size: ${rem(96)}px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: ${rem(112)}px;
+      letter-spacing: -${rem(1.5)}px;
+    }
+
+    h2,
+    .as-h2 {
+      font-size: ${rem(60)}px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: ${rem(70)}px;
+    }
+
+    h3,
+    .as-h3 {
+      font-size: ${rem(48)}px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: ${rem(56)}px;
+    }
+
+    h4,
+    .as-h4 {
+      font-size: ${rem(34)}px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: ${rem(40)}px;
+      letter-spacing: ${rem(0.25)}px;
+    }
+
+    h5,
+    .as-h5 {
+      font-size: ${rem(24)}px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: ${rem(28)}px;
+    }
+
+    h6,
+    .as-h6 {
+      font-size: ${rem(20)}px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${rem(28)}px;
+      letter-spacing: ${rem(0.15)}px;
+    }
+
+    p {
+      font-size: ${rem(16)}px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: ${rem(24)}px;
+      letter-spacing: ${rem(0.44)}px;
+    }
   }
 `;
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <Component {...pageProps} />;
+    </>
+  );
 }
