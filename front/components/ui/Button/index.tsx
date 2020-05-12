@@ -6,7 +6,7 @@ import { css, cx } from 'linaria';
 import { rem } from 'polished';
 
 interface Props {
-  variant: 'default' | 'ghost' | 'smooth' | 'raised';
+  variant?: 'default' | 'ghost' | 'smooth' | 'raised';
 }
 
 type ButtonProps = ReakitButtonProps & Props;
