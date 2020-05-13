@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Box } from 'reakit/Box';
 import { css } from 'linaria';
-
 import { normalize, rem } from 'polished';
 import Head from 'next/head';
 
