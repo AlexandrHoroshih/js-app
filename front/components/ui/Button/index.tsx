@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Button as ReakitButton,
   ButtonProps as ReakitButtonProps,
@@ -27,7 +28,7 @@ const buttonBase = css`
 
   background: var(--blue-base);
   border: none;
-  border-radius: var(--b-radius);
+  border-radius: var(--b-radius-4);
 `;
 
 export const Button = ({

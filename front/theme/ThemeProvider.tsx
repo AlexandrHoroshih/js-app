@@ -29,7 +29,8 @@ const shadowVars = css`
 `;
 
 const miscVars = css`
-  --b-radius: 6px;
+  --b-radius-4: 4px;
+  --b-radius-6: 6px;
 `;
 
 export const ThemeProvider: React.FC = ({ children }) => {
