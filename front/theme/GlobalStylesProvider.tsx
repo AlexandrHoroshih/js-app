@@ -99,6 +99,8 @@ export const globals = css`
       line-height: ${rem(24)};
       letter-spacing: ${rem(0.44)};
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
   }
 `;
 
@@ -106,10 +108,6 @@ export const GlobalStylesProvider: React.FC = ({ children }) => (
   <>
     <Head>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap"
-        rel="stylesheet"
-      ></link>
     </Head>
     <>{children}</>
   </>
