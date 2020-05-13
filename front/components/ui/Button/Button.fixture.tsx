@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <div style={{ padding: 16 }}>
-      <Button disabled={disabled}>text</Button>
+      <Button disabled={disabled}>button</Button>
     </div>
   );
 };
