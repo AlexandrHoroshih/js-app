@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Box } from 'reakit/Box';
 import { css } from 'linaria';
 import { normalize, rem } from 'polished';
 import Head from 'next/head';
@@ -112,6 +111,6 @@ export const GlobalStylesProvider: React.FC = ({ children }) => (
         rel="stylesheet"
       ></link>
     </Head>
-    <Box>{children}</Box>
+    <>{children}</>
   </>
 );
