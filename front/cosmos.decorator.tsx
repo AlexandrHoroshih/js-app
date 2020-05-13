@@ -6,6 +6,7 @@ import { CommonStylesProvider } from './theme';
 
 const editable = css`
   &[contenteditable='true'] *:hover {
+    cursor: text;
     box-shadow: 0 0 0 2px red inset;
   }
 `;
