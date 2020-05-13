@@ -1,7 +1,9 @@
 {
   "$schema": "http://json.schemastore.org/cosmos-config",
-  "staticPath": ".next",
-  "globalImports": ["./.next/static/css/styles.chunk.css"],
+  "staticPath": "public",
+  "webpack": {
+    "overridePath": "./cosmos.override.js"
+  },
   "ui": {
     "responsivePreview": {
       "devices": [
