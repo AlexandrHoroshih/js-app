@@ -1,4 +1,6 @@
-import { Button } from 'components/ui/Button';
+import * as React from 'react';
+
+import { Button } from '@components/ui/Button';
 
 const Home = () => (
   <>
