@@ -26,15 +26,40 @@ const buttonBase = css`
   text-transform: uppercase;
   letter-spacing: ${rem(0.75)};
 
+  cursor: pointer;
   background: var(--blue-base);
   border: none;
   border-radius: var(--b-radius-4);
+  box-shadow: var(--blue-shadow8dp);
+  transition: transform 0.4s cubic-bezier(0.8, -0.8, 0, 2);
+
+  &:hover {
+    transform: scale(1.2, 1.1);
+  }
 `;
+
+const buttonSmooth = css`
+  color: var(--blue-base);
+  background: var(--blue-smooth);
+  box-shadow: none;
+`;
+
+const mapVariantToClass = {
+  default: '',
+  smooth: buttonSmooth,
+};
 
 export const Button = ({
   variant = 'default',
   className,
   ...props
-}: ButtonProps) => (
-  <ReakitButton {...props} className={cx(buttonBase, className)} />
-);
+}: ButtonProps) => {
+  const variantClass = mapVariantToClass[variant];
+
+  return (
+    <ReakitButton
+      {...props}
+      className={cx(buttonBase, variantClass, className)}
+    />
+  );
+};
