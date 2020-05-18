@@ -26,6 +26,11 @@ const shadowVars = css`
   --shadow8dp: ${s.shadow8dp};
   --shadow16dp: ${s.shadow16dp};
   --shadow24dp: ${s.shadow24dp};
+
+  --blue-shadow4dp: ${s.getColoredShadow(c.BLUE_BASE)};
+  --blue-shadow8dp: ${s.getColoredShadow(c.BLUE_BASE, 8)};
+  --blue-shadow16dp: ${s.getColoredShadow(c.BLUE_BASE, 16)};
+  --blue-shadow24dp: ${s.getColoredShadow(c.BLUE_BASE, 24)};
 `;
 
 const miscVars = css`
