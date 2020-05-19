@@ -9,9 +9,9 @@ export const YELLOW_BASE = '#F3A72E';
 export const BLACK_BASE = '#3E4345';
 export const WHITE_BASE = '#FFFFFF';
 
-const makeSmooth = (color: string) => rgba(color, 0.2);
+export const makeColorSmooth = (color: string) => rgba(color, 0.2);
 
-export const BLUE_SMOOTH = makeSmooth(BLUE_BASE);
-export const RED_SMOOTH = makeSmooth(RED_BASE);
-export const GREEN_SMOOTH = makeSmooth(GREEN_BASE);
-export const YELLOW_SMOOTH = makeSmooth(YELLOW_BASE);
+export const BLUE_SMOOTH = makeColorSmooth(BLUE_BASE);
+export const RED_SMOOTH = makeColorSmooth(RED_BASE);
+export const GREEN_SMOOTH = makeColorSmooth(GREEN_BASE);
+export const YELLOW_SMOOTH = makeColorSmooth(YELLOW_BASE);
