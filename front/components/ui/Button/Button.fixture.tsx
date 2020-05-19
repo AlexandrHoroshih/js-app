@@ -11,13 +11,19 @@ export default () => {
   });
 
   return (
-    <StackLayout style={{ padding: 16, maxWidth: 320 }}>
+    <StackLayout style={{ padding: 16 }}>
       <Button disabled={disabled} mainColor={mainColor}>
         button
       </Button>
-      <Button variant="smooth">Smooth</Button>
-      <Button variant="raised">Raised</Button>
-      <Button variant="ghost">Ghost</Button>
+      <Button variant="smooth" mainColor={mainColor}>
+        Smooth
+      </Button>
+      <Button variant="raised" mainColor={mainColor}>
+        Raised
+      </Button>
+      <Button variant="ghost" mainColor={mainColor}>
+        Ghost
+      </Button>
     </StackLayout>
   );
 };
