@@ -12,7 +12,9 @@ const editable = css`
 `;
 
 const CommonDecorator: React.FC = ({ children }) => {
-  const [isContentEditable] = useValue('Text edit', { defaultValue: false });
+  const [isContentEditable] = useValue('Global:text edit', {
+    defaultValue: false,
+  });
 
   return (
     <div className={editable} contentEditable={isContentEditable}>
