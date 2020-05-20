@@ -13,12 +13,19 @@ export const fetchCssVar = (
   cssvar: string,
   ref: HTMLElement | null = rootNode,
 ): string => {
-  if (!isCssVar(cssvar)) return cssvar;
+  if (!isCssVar(cssvar) || !ref) return cssvar;
 
   let value = null;
 
-  if (ref) {
-    value = getComputedStyle(ref).getPropertyValue(cssvar);
+  try {
+    if (ref !== null) {
+      value = getComputedStyle(ref).getPropertyValue(cssvar);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+
+    return cssvar;
   }
 
   if (value) {
