@@ -1,6 +1,7 @@
 export const cssVarRegExp = /--\S*/g;
 export const cssVarCallRegExp = /var\((--\S*)\)/g;
 
-export const isCssVar = (cssvar: string) => cssvar.match(cssVarRegExp);
+export const isCssVar = (cssvar: string) => cssvar.match(cssVarRegExp) !== null;
 
-export const isCssVarCall = (cssvar: string) => cssvar.match(cssVarCallRegExp);
+export const getCssVars = (searchStr: string) =>
+  searchStr.match(cssVarCallRegExp);
