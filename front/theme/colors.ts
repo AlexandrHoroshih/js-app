@@ -9,7 +9,16 @@ export const YELLOW_BASE = '#F3A72E';
 export const BLACK_BASE = '#3E4345';
 export const WHITE_BASE = '#FFFFFF';
 
-export const makeColorSmooth = (color: string) => rgba(color, 0.2);
+export const makeColorSmooth = (color: string) => {
+  try {
+    return rgba(color, 0.2);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+
+    return color;
+  }
+};
 
 export const BLUE_SMOOTH = makeColorSmooth(BLUE_BASE);
 export const RED_SMOOTH = makeColorSmooth(RED_BASE);
