@@ -10,6 +10,6 @@ export const StackLayout = styled.div`
   flex-flow: column nowrap;
 
   & > *:not(:last-child) {
-    margin-bottom: ${(props: Props) => props.stackGap || 16}px;
+    margin-bottom: ${({ stackGap = 16 }: Props) => stackGap}px;
   }
 `;
