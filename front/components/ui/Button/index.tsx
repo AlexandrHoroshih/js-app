@@ -7,17 +7,17 @@ import { css, cx } from 'linaria';
 import { rem } from 'polished';
 
 import { getColoredShadow } from '../../../theme/shadows';
-import { makeColorSmooth } from '../../../theme/colors';
+import { makeColorSmooth, makeColorDarken } from '../../../theme/colors';
 import { fetchCssVar } from '../../../utils/css/fetchCssFromRef';
 
-type ButtonVariantToClassMap = {
+export type ButtonVariantToClassMap = {
   default: string;
   ghost: string;
-  smooth: string;
   raised: string;
+  clean: string;
 };
 
-type ButtonVariant = keyof ButtonVariantToClassMap;
+export type ButtonVariant = keyof ButtonVariantToClassMap;
 
 interface Props {
   variant?: ButtonVariant;
@@ -26,6 +26,8 @@ interface Props {
 }
 
 type ButtonProps = ReakitButtonProps & Props;
+
+type FabProps = ButtonProps;
 
 const buttonBase = css`
   display: flex;
@@ -47,11 +49,10 @@ const buttonBase = css`
   background: var(--btn-main-color);
   border: none;
   border-radius: var(--b-radius-4);
-  box-shadow: ${getColoredShadow('var(--btn-main-color)', 8)};
-  transition: transform 0.4s cubic-bezier(0.8, -0.8, 0, 2);
 
-  &:hover {
-    transform: scale(1.15, 1.1);
+  &:focus,
+  &:focus-within {
+    outline: 2px solid var(--btn-focus-color);
   }
 
   &[disabled] {
@@ -62,17 +63,28 @@ const buttonBase = css`
   }
 `;
 
-const buttonSmooth = css`
-  color: var(--btn-main-color);
-  background: var(--btn-smooth-color);
-  box-shadow: none;
+const buttonDefault = css`
+  box-shadow: ${getColoredShadow('var(--btn-main-color)', 8)};
+
+  transition: transform 0.4s cubic-bezier(0.8, -0.8, 0, 2);
+
+  &:hover {
+    transform: scale(1.15, 1.1);
+  }
 `;
 
 const buttonGhost = css`
+  padding-right: 23px;
+  padding-left: 23px;
   color: var(--btn-main-color);
   background: none;
   border: 1px solid var(--btn-main-color);
-  box-shadow: none;
+
+  transition: background-color 0.1s ease-in;
+
+  &:hover {
+    background: var(--btn-smooth-color);
+  }
 `;
 
 const buttonRaised = css`
@@ -80,13 +92,31 @@ const buttonRaised = css`
   background: var(--white);
   border: none;
   box-shadow: var(--shadow8dp);
+
+  transition: transform 0.4s cubic-bezier(0.8, -0.8, 0, 2);
+
+  &:hover {
+    transform: scale(1.15, 1.1);
+  }
+`;
+
+const buttonClean = css`
+  color: var(--btn-main-color);
+  background: none;
+  border: none;
+
+  transition: background-color 0.1s ease-in;
+
+  &:hover {
+    background: var(--btn-smooth-color);
+  }
 `;
 
 const mapVariantToClass: ButtonVariantToClassMap = {
-  default: '',
-  smooth: buttonSmooth,
+  default: buttonDefault,
   ghost: buttonGhost,
   raised: buttonRaised,
+  clean: buttonClean,
 };
 
 export const Button = ({
@@ -94,17 +124,20 @@ export const Button = ({
   className,
   mainColor = 'var(--blue-base)',
   secondaryColor = 'var(--white)',
+  style,
   ...props
 }: ButtonProps) => {
   const btnRef = React.useRef(null);
   const variantClass = mapVariantToClass[variant];
-  const [smoothColor, setSmoothColor] = React.useState('--white');
+  const [smoothColor, setSmoothColor] = React.useState('var(--white)');
+  const [focusColor, setFocusColor] = React.useState('var(--btn-main-color)');
 
   React.useEffect(() => {
     if (btnRef.current !== null) {
       const fetchedMainColor = fetchCssVar('--btn-main-color', btnRef.current);
 
       setSmoothColor(makeColorSmooth(fetchedMainColor));
+      setFocusColor(makeColorDarken(fetchedMainColor));
     }
   }, [btnRef.current, mainColor]);
 
@@ -116,8 +149,19 @@ export const Button = ({
         ['--btn-main-color' as any]: mainColor,
         ['--btn-sec-color' as any]: secondaryColor,
         ['--btn-smooth-color' as any]: smoothColor,
+        ['--btn-focus-color' as any]: focusColor,
+        ...style,
       }}
       ref={btnRef}
     />
   );
 };
+
+const fabBase = css`
+  justify-content: center;
+  padding: 16px;
+`;
+
+export const Fab = ({ className, ...rest }: FabProps) => (
+  <Button className={cx(fabBase, className)} {...rest} />
+);
