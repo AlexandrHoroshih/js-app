@@ -1,4 +1,4 @@
-import { rgba } from 'polished';
+import { rgba, darken } from 'polished';
 
 // intended to use with polished.js "rgba" func
 export const BLUE_BASE = '#367BF5';
@@ -24,3 +24,14 @@ export const BLUE_SMOOTH = makeColorSmooth(BLUE_BASE);
 export const RED_SMOOTH = makeColorSmooth(RED_BASE);
 export const GREEN_SMOOTH = makeColorSmooth(GREEN_BASE);
 export const YELLOW_SMOOTH = makeColorSmooth(YELLOW_BASE);
+
+export const makeColorDarken = (color: string) => {
+  try {
+    return darken(0.2, color);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+
+    return color;
+  }
+};
