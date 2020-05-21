@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 interface Props {
-  color: string;
+  color?: string;
   width?: number;
   height?: number;
 }
 
 export const MenuIcon: React.FC<Props> = ({
-  color,
+  color = 'currentColor',
   width = 18,
   height = 12,
 }) => (
