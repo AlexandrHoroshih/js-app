@@ -9,6 +9,9 @@ export default () => {
   const [mainColor] = useValue('Button:mainColor', {
     defaultValue: 'var(--blue-base)',
   });
+  const [secondaryColor] = useValue('Button:mainColor', {
+    defaultValue: 'var(--blue-base)',
+  });
 
   return (
     <div style={{ display: 'flex' }}>
@@ -16,13 +19,27 @@ export default () => {
         <Button disabled={disabled} mainColor={mainColor}>
           button
         </Button>
-        <Button disabled={disabled} variant="raised" mainColor={mainColor}>
+        <Button
+          disabled={disabled}
+          variant="raised"
+          mainColor={mainColor}
+          secondaryColor={secondaryColor}
+        >
           Raised
         </Button>
-        <Button disabled={disabled} variant="ghost" mainColor={mainColor}>
+        <Button
+          disabled={disabled}
+          variant="ghost"
+          mainColor={mainColor}
+          secondaryColor={secondaryColor}
+        >
           Ghost
         </Button>
-        <Button variant="clean" mainColor={mainColor}>
+        <Button
+          variant="clean"
+          mainColor={mainColor}
+          secondaryColor={secondaryColor}
+        >
           Just text
         </Button>
       </StackLayout>
