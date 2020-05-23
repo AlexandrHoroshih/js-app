@@ -8,16 +8,16 @@ import { rem } from 'polished';
 
 import { getColoredShadow } from '../../../theme/shadows';
 import { makeColorSmooth, makeColorDarken } from '../../../theme/colors';
-import { fetchCssVar } from '../../../utils/css/fetchCssFromRef';
+import { useFetchedCssVar } from '../../../utils/hooks/useFetchedCssVar';
 
-export type ButtonVariantToClassMap = {
+type ButtonVariantToClassMap = {
   default: string;
   ghost: string;
   raised: string;
   clean: string;
 };
 
-export type ButtonVariant = keyof ButtonVariantToClassMap;
+type ButtonVariant = keyof ButtonVariantToClassMap;
 
 interface Props {
   variant?: ButtonVariant;
@@ -132,14 +132,14 @@ export const Button = ({
   const [smoothColor, setSmoothColor] = React.useState('var(--white)');
   const [focusColor, setFocusColor] = React.useState('var(--btn-main-color)');
 
-  React.useEffect(() => {
-    if (btnRef.current !== null) {
-      const fetchedMainColor = fetchCssVar('--btn-main-color', btnRef.current);
-
-      setSmoothColor(makeColorSmooth(fetchedMainColor));
-      setFocusColor(makeColorDarken(fetchedMainColor));
-    }
-  }, [btnRef.current, mainColor]);
+  useFetchedCssVar('--btn-main-color', {
+    ref: btnRef,
+    onFetch: (val) => {
+      setSmoothColor(makeColorSmooth(val));
+      setFocusColor(makeColorDarken(val));
+    },
+    depsArray: [mainColor],
+  });
 
   return (
     <ReakitButton
