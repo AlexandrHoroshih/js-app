@@ -18,6 +18,8 @@ const colorVars = css`
   --green-smooth: ${c.GREEN_SMOOTH};
 
   --black: ${c.BLACK_BASE};
+  --gray: ${c.GRAY_BASE};
+  --dark-gray: ${c.DARK_GRAY_BASE};
   --white: ${c.WHITE_BASE};
 `;
 
