@@ -15,9 +15,8 @@ const editable = css`
   }
 `;
 
-const onMove = ({ target }) => {
-  const targetEditable = target.contentEditable;
-  const isEditable = targetEditable === 'inherit' ? false : targetEditable;
+const toggleEditable = ({ target }) => {
+  const isEditable = target.isContentEditable;
 
   if (!isEditable) {
     target.contentEditable = true;
@@ -33,15 +32,15 @@ const ContentEditableDecorator: React.FC = ({ children }) => {
 
   React.useEffect(() => {
     if (isContentEditable) {
-      document.addEventListener('mouseup', onMove);
+      document.addEventListener('mouseup', toggleEditable);
     }
 
     if (!isContentEditable) {
-      document.removeEventListener('mouseup', onMove);
+      document.removeEventListener('mouseup', toggleEditable);
     }
 
     return () => {
-      document.removeEventListener('mouseup', onMove);
+      document.removeEventListener('mouseup', toggleEditable);
     };
   }, [isContentEditable]);
 
