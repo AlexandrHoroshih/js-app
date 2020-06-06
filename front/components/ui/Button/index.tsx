@@ -165,3 +165,7 @@ const fabBase = css`
 export const Fab = ({ className, ...rest }: FabProps) => (
   <Button className={cx(fabBase, className)} {...rest} />
 );
+
+export const LinkButton: React.FC<ButtonProps> = ({ ...props }) => (
+  <Button {...props} as="a" />
+);
