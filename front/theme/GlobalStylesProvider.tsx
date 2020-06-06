@@ -11,6 +11,7 @@ const normalizeCss = normalize().reduce(
 );
 
 const BASE_FONT_SIZE = 16; // intended to use with polished's "rem" function, rem's default reference ont size is 16px;
+const BASE_FONT_SIZE_MOBILE = 12;
 
 export const globals = css`
   :global() {
@@ -18,7 +19,11 @@ export const globals = css`
 
     html {
       box-sizing: border-box;
-      font-size: ${BASE_FONT_SIZE}px;
+      font-size: ${BASE_FONT_SIZE_MOBILE}px;
+
+      @media (min-width: 768px) {
+        font-size: ${BASE_FONT_SIZE}px;
+      }
     }
 
     *,
