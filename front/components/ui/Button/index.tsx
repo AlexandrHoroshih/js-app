@@ -23,6 +23,7 @@ interface Props {
   variant?: ButtonVariant;
   mainColor?: string;
   secondaryColor?: string;
+  fullWidth?: boolean;
 }
 
 type ButtonProps = ReakitButtonProps & Props;
@@ -49,11 +50,6 @@ const buttonBase = css`
   background: var(--btn-main-color);
   border: none;
   border-radius: var(--b-radius-4);
-
-  &:focus,
-  &:focus-within {
-    outline: 2px solid var(--btn-focus-color);
-  }
 
   &[disabled] {
     color: lightgrey;
@@ -112,6 +108,10 @@ const buttonClean = css`
   }
 `;
 
+const buttonFullWidth = css`
+  width: 100%;
+`;
+
 const mapVariantToClass: ButtonVariantToClassMap = {
   default: buttonDefault,
   ghost: buttonGhost,
@@ -124,6 +124,7 @@ export const Button = ({
   className,
   mainColor = 'var(--blue-base)',
   secondaryColor = 'var(--white)',
+  fullWidth = false,
   style,
   ...props
 }: ButtonProps) => {
@@ -144,7 +145,12 @@ export const Button = ({
   return (
     <ReakitButton
       {...props}
-      className={cx(buttonBase, variantClass, className)}
+      className={cx(
+        buttonBase,
+        variantClass,
+        fullWidth ? buttonFullWidth : '',
+        className,
+      )}
       style={{
         ['--btn-main-color' as any]: mainColor,
         ['--btn-sec-color' as any]: secondaryColor,
