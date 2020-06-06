@@ -1,7 +1,5 @@
 import { isCssVar } from './isCssVar';
 
-const rootNode = document.documentElement || document.querySelector('body');
-
 /**
  * based on polished.js cssVar helper https://github.com/styled-components/polished/blob/master/src/helpers/cssVar.js
  * but can fetch from other DOM element than the root one (use "refNode" param).
@@ -11,14 +9,14 @@ const rootNode = document.documentElement || document.querySelector('body');
 
 export const fetchCssVar = (
   cssvar: string,
-  refNode: HTMLElement | null = rootNode,
+  refNode: HTMLElement | null,
 ): string => {
   if (!isCssVar(cssvar) || !refNode) return cssvar;
 
   let value = null;
 
   try {
-    if (refNode !== null) {
+    if (refNode || document.documentElement) {
       value = getComputedStyle(refNode).getPropertyValue(cssvar);
     }
   } catch (error) {

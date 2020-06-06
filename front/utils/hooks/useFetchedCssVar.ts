@@ -2,8 +2,6 @@ import { useState, useEffect, MutableRefObject } from 'react';
 
 import { fetchCssVar } from '../css/fetchCssFromRef';
 
-const rootNode = document.documentElement || document.querySelector('body');
-
 type DependencyArray = any[];
 
 type Options = {
@@ -31,7 +29,10 @@ export const useFetchedCssVar = (
   const [currentValue, setValue] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchedVar = fetchCssVar(varToFetch, ref.current || rootNode);
+    const fetchedVar = fetchCssVar(
+      varToFetch,
+      ref.current || document.documentElement,
+    );
 
     if (fetchedVar) {
       setValue(fetchedVar);
