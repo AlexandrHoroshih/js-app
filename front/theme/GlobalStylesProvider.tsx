@@ -100,6 +100,23 @@ export const globals = css`
       letter-spacing: ${rem(0.44)};
     }
 
+    a {
+      font-size: ${rem(16)};
+      font-style: normal;
+      font-weight: normal;
+      line-height: ${rem(24)};
+
+      color: var(--blue-base);
+      text-decoration: none;
+      letter-spacing: ${rem(0.44)};
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+        text-decoration: underline;
+      }
+    }
+
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
   }
 `;
