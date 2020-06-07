@@ -5,13 +5,16 @@ import { CommonStylesProvider } from '../theme';
 import { AppLayout, AppContentWrapper } from '../components/features/AppLayout';
 import { AppHeader } from '../components/features/AppHeader';
 import { AppNavigation } from '../components/features/AppNavigation';
+import { Login } from '../components/features/Login';
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CommonStylesProvider>
       <AppLayout>
-        <AppHeader />
+        <AppHeader>
+          <Login />
+        </AppHeader>
         <AppNavigation />
         <AppContentWrapper>
           <Component {...pageProps} />
