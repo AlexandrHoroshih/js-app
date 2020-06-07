@@ -8,6 +8,10 @@ const nav = css`
   flex-flow: column nowrap;
   grid-area: nav;
   padding: 16px;
+
+  & > *:not(:last-child) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const AppNavigation: React.FC = () => {
