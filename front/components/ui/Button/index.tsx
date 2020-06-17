@@ -152,10 +152,10 @@ export const Button = ({
         className,
       )}
       style={{
-        ['--btn-main-color' as any]: mainColor,
-        ['--btn-sec-color' as any]: secondaryColor,
-        ['--btn-smooth-color' as any]: smoothColor,
-        ['--btn-focus-color' as any]: focusColor,
+        ['--btn-main-color']: mainColor,
+        ['--btn-sec-color']: secondaryColor,
+        ['--btn-smooth-color']: smoothColor,
+        ['--btn-focus-color']: focusColor,
         ...style,
       }}
       ref={btnRef}
@@ -175,3 +175,12 @@ export const Fab = ({ className, ...rest }: FabProps) => (
 export const LinkButton: React.FC<ButtonProps> = ({ ...props }) => (
   <Button {...props} as="a" />
 );
+
+declare module 'csstype' {
+  interface Properties {
+    '--btn-main-color'?: string;
+    '--btn-sec-color'?: string;
+    '--btn-smooth-color'?: string;
+    '--btn-focus-color'?: string;
+  }
+}
