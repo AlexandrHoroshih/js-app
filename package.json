@@ -12,8 +12,10 @@
   ],
   "scripts": {
     "commit": "git-cz",
-    "start:front:dev": "yarn workspace front dev",
-    "start:back:dev": "yarn workspace back start:dev"
+    "front": "yarn workspace front",
+    "back": "yarn workspace back",
+    "front:start:dev": "yarn front dev",
+    "back:start:dev": "yarn back start:dev"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
