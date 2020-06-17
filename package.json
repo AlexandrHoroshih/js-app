@@ -11,7 +11,37 @@
     "front"
   ],
   "scripts": {
-      "start:front:dev": "yarn workspace front dev",
-      "start:back:dev": "yarn workspace back start:dev"
+    "commit": "git-cz",
+    "start:front:dev": "yarn workspace front dev",
+    "start:back:dev": "yarn workspace back start:dev"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "commitizen": "^4.0.4",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js,jsx,scss,css,js,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
