@@ -119,61 +119,69 @@ const mapVariantToClass: ButtonVariantToClassMap = {
   clean: buttonClean,
 };
 
-export const Button = ({
-  variant = 'default',
-  className,
-  mainColor = 'var(--blue-base)',
-  secondaryColor = 'var(--white)',
-  fullWidth = false,
-  style,
-  ...props
-}: ButtonProps) => {
-  const btnRef = React.useRef(null);
-  const variantClass = mapVariantToClass[variant];
-  const [smoothColor, setSmoothColor] = React.useState('var(--white)');
-  const [focusColor, setFocusColor] = React.useState('var(--btn-main-color)');
-
-  useFetchedCssVar('--btn-main-color', {
-    ref: btnRef,
-    onFetch: (val) => {
-      setSmoothColor(makeColorSmooth(val));
-      setFocusColor(makeColorDarken(val));
+export const Button: React.FC<ButtonProps> = React.forwardRef(
+  (
+    {
+      variant = 'default',
+      className,
+      mainColor = 'var(--blue-base)',
+      secondaryColor = 'var(--white)',
+      fullWidth = false,
+      style,
+      ...props
     },
-    depsArray: [mainColor],
-  });
+    ref,
+  ) => {
+    const btnRef = React.useRef(null);
+    const variantClass = mapVariantToClass[variant];
+    const [smoothColor, setSmoothColor] = React.useState('var(--white)');
+    const [focusColor, setFocusColor] = React.useState('var(--btn-main-color)');
 
-  return (
-    <ReakitButton
-      {...props}
-      className={cx(
-        buttonBase,
-        variantClass,
-        fullWidth ? buttonFullWidth : '',
-        className,
-      )}
-      style={{
-        ['--btn-main-color']: mainColor,
-        ['--btn-sec-color']: secondaryColor,
-        ['--btn-smooth-color']: smoothColor,
-        ['--btn-focus-color']: focusColor,
-        ...style,
-      }}
-      ref={btnRef}
-    />
-  );
-};
+    useFetchedCssVar('--btn-main-color', {
+      ref: btnRef,
+      onFetch: (val) => {
+        setSmoothColor(makeColorSmooth(val));
+        setFocusColor(makeColorDarken(val));
+      },
+      depsArray: [mainColor],
+    });
+
+    return (
+      <ReakitButton
+        ref={ref}
+        {...props}
+        className={cx(
+          buttonBase,
+          variantClass,
+          fullWidth ? buttonFullWidth : '',
+          className,
+        )}
+        style={{
+          ['--btn-main-color']: mainColor,
+          ['--btn-sec-color']: secondaryColor,
+          ['--btn-smooth-color']: smoothColor,
+          ['--btn-focus-color']: focusColor,
+          ...style,
+        }}
+        ref={btnRef}
+      />
+    );
+  },
+);
 
 const fabBase = css`
   justify-content: center;
   padding: 16px;
 `;
 
-export const Fab = ({ className, ...rest }: FabProps) => (
-  <Button className={cx(fabBase, className)} {...rest} />
+export const Fab: React.FC<FabProps> = React.forwardRef(
+  ({ className, ...rest }, ref) => (
+    <Button ref={ref} className={cx(fabBase, className)} {...rest} />
+  ),
 );
 
-export const LinkButton: React.FC<ButtonProps> = ({ ...props }) => (
-  <Button {...props} as="a" />
+export const LinkButton: React.FC<ButtonProps> = React.forwardRef(
+  ({ ...props }, ref) => <Button {...props} ref={ref} as="a" />,
 );
 
 declare module 'csstype' {
