@@ -1,6 +1,6 @@
 import { useState, useEffect, RefObject } from 'react';
 
-import { fetchCssVar } from '../css/fetchCssFromRef';
+import { fetchCssProp } from '../css/fetchCssFromRef';
 
 type DependencyArray = any[];
 
@@ -29,7 +29,7 @@ export const useFetchedCssVar = (
   const [currentValue, setValue] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchedVar = fetchCssVar(
+    const fetchedVar = fetchCssProp(
       varToFetch,
       ref.current || document.documentElement,
     );

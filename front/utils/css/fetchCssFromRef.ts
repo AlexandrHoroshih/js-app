@@ -1,34 +1,23 @@
-import { isCssVar } from './isCssVar';
-
 /**
- * based on polished.js cssVar helper https://github.com/styled-components/polished/blob/master/src/helpers/cssVar.js
- * but can fetch from other DOM element than the root one (use "refNode" param).
- * if provided string is not cssVar - its just passed through.
- * if it is a cssVar - returns its value, if there is one on provided refNode.
+ * @param propName - property name, can be regular css prop or custom prop (like --my-custom-prop-name)
+ * @param refNode - DOM element which css prop will be fetched
+ * @param isThrows - if true, then throws error if one happens. defaults to false
  */
 
-export const fetchCssVar = (
-  cssvar: string,
-  refNode: HTMLElement | null,
+export const fetchCssProp = (
+  propName: string,
+  refNode: HTMLElement | null | undefined,
+  isThrows: boolean = false,
 ): string => {
-  if (!isCssVar(cssvar) || !refNode) return cssvar;
-
-  let value = null;
-
   try {
-    if (refNode || document.documentElement) {
-      value = getComputedStyle(refNode).getPropertyValue(cssvar);
-    }
+    return getComputedStyle(
+      refNode || document.documentElement,
+    ).getPropertyValue(propName);
   } catch (error) {
+    if (isThrows) throw error;
     // eslint-disable-next-line no-console
     console.error(error);
 
-    return cssvar;
+    return propName;
   }
-
-  if (value) {
-    return value;
-  }
-
-  return cssvar;
 };
