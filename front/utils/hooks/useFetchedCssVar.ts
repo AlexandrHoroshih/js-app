@@ -1,11 +1,11 @@
-import { useState, useEffect, MutableRefObject } from 'react';
+import { useState, useEffect, RefObject } from 'react';
 
 import { fetchCssVar } from '../css/fetchCssFromRef';
 
 type DependencyArray = any[];
 
 type Options = {
-  ref?: MutableRefObject<null>;
+  ref?: RefObject<HTMLElement>;
   onFetch?: (str: string) => void;
   depsArray?: DependencyArray;
 };
