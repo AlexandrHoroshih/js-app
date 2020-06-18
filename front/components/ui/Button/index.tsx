@@ -9,6 +9,7 @@ import { rem } from 'polished';
 import { getColoredShadow } from '../../../theme/shadows';
 import { makeColorSmooth, makeColorDarken } from '../../../theme/colors';
 import { useFetchedCssVar } from '../../../utils/hooks/useFetchedCssVar';
+import { useComboRef } from '../../../utils/hooks/useComboRef';
 
 type ButtonVariantToClassMap = {
   default: string;
@@ -119,7 +120,7 @@ const mapVariantToClass: ButtonVariantToClassMap = {
   clean: buttonClean,
 };
 
-export const Button: React.FC<ButtonProps> = React.forwardRef(
+export const Button = React.forwardRef<HTMLElement, ButtonProps>(
   (
     {
       variant = 'default',
@@ -130,15 +131,16 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       style,
       ...props
     },
-    ref,
+    ref = null,
   ) => {
     const btnRef = React.useRef(null);
+    const finalRef = useComboRef(btnRef, ref);
     const variantClass = mapVariantToClass[variant];
     const [smoothColor, setSmoothColor] = React.useState('var(--white)');
     const [focusColor, setFocusColor] = React.useState('var(--btn-main-color)');
 
     useFetchedCssVar('--btn-main-color', {
-      ref: btnRef,
+      ref: finalRef,
       onFetch: (val) => {
         setSmoothColor(makeColorSmooth(val));
         setFocusColor(makeColorDarken(val));
@@ -148,7 +150,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
 
     return (
       <ReakitButton
-        ref={ref}
+        ref={finalRef}
         {...props}
         className={cx(
           buttonBase,
@@ -163,7 +165,6 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
           ['--btn-focus-color']: focusColor,
           ...style,
         }}
-        ref={btnRef}
       />
     );
   },
@@ -174,13 +175,13 @@ const fabBase = css`
   padding: 16px;
 `;
 
-export const Fab: React.FC<FabProps> = React.forwardRef(
+export const Fab = React.forwardRef<HTMLElement, FabProps>(
   ({ className, ...rest }, ref) => (
     <Button ref={ref} className={cx(fabBase, className)} {...rest} />
   ),
 );
 
-export const LinkButton: React.FC<ButtonProps> = React.forwardRef(
+export const LinkButton = React.forwardRef<HTMLElement, ButtonProps>(
   ({ ...props }, ref) => <Button {...props} ref={ref} as="a" />,
 );
 
