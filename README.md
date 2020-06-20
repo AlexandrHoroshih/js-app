@@ -7,8 +7,20 @@ It means using stuff and writing frontend code as less coupled to React as possi
 
 And another goal is just to try to use or implemenent a lot of different stuff on the way and having fun.
 
-Frontend: `yarn front dev` or `yarn front:start:dev`
-Backend: `yarn back start:dev` or `yarn back:start:dev`
+Frontend:
+
+```
+yarn front dev
+#or
+yarn front:start:dev
+```
+
+Backend:
+
+```
+yarn back start:dev
+#or yarn back:start:dev
+```
 
 App uses commitizen to create commit messages following to conventional commits spec.
 `yarn commit` command starts a nice CLI to create commit with "conventional" description.
