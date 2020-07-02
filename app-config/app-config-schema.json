@@ -1,6 +1,8 @@
 {
+  "env": ["required", { "one_of": ["development", "production"] }],
   "host": ["required", "string"],
   "backPort": ["required", "positive_integer"],
+  "backUrl": ["required", "string"],
   "db": [
     "required",
     {

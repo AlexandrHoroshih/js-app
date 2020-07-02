@@ -1,20 +1,21 @@
-import fastify from 'fastify';
+import { Server } from '@logux/server';
 
 import config from '../../app-config';
 
-const { backPort = 5000 } = config;
+console.log(process.env.NODE_ENV);
 
-const app: fastify.FastifyInstance = fastify({
-  logger: true,
+const server = new Server(
+  Server.loadOptions(process, {
+    subprotocol: '1.0.0',
+    supports: '1.x',
+    root: __dirname,
+    port: config.backPort,
+  }),
+);
+
+server.auth(({ userId, token }) => {
+  // Allow only local users until we will have a proper authentication
+  return config.env === 'development';
 });
 
-const main = async () => {
-  try {
-    await app.listen(backPort);
-  } catch (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
-};
-
-main();
+server.listen();
