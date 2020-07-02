@@ -1,3 +1,16 @@
 {
-  "backPort": ["required", "positive_integer"]
+  "host": ["required", "string"],
+  "backPort": ["required", "positive_integer"],
+  "db": [
+    "required",
+    {
+      "nested_object": {
+        "database": ["required", "string"],
+        "user": ["required", "string"],
+        "password": ["required", "string"],
+        "port": ["required", "positive_integer"],
+        "host": ["required", "string"]
+      }
+    }
+  ]
 }
