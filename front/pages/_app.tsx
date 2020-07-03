@@ -3,12 +3,10 @@ import { AppProps } from 'next/app';
 
 import { CommonStylesProvider } from '../theme';
 import { StoreProvider } from '../store/StoreProvider';
-import { AppLayout, AppContentWrapper } from '../components/features/AppLayout';
-import { AppHeader } from '../components/features/AppHeader';
-import { AppNavigation } from '../components/features/AppNavigation';
-import { Login } from '../components/features/Login';
-
-import { initStore, initLoguxClient } from '../store/initStore';
+import { AppLayout, AppContentWrapper } from '../features/AppLayout';
+import { AppHeader } from '../features/AppHeader';
+import { AppNavigation } from '../features/AppNavigation';
+import { Login } from '../features/Login';
 
 const { useLayoutEffect } = React;
 
