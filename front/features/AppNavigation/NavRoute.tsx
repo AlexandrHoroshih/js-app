@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { LinkButton } from '../../ui/Button';
+import { LinkButton } from '../../components/ui/Button';
 
 interface Props {
   href: string;
