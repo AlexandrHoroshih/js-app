@@ -13,11 +13,7 @@ dotenv.config({
 });
 
 const APP_CONF_PATH = path.resolve(__dirname, "./app-config.json");
-const APP_CONF_SCHEME_PATH = path.resolve(
-  __dirname,
-  "./app-config-schema.json"
-);
 
-const finalConf = confme(APP_CONF_PATH, APP_CONF_SCHEME_PATH);
+const finalConf = confme(APP_CONF_PATH);
 
 module.exports = finalConf;
