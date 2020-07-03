@@ -4,10 +4,12 @@ import config from '../../app-config';
 
 console.log(process.env.NODE_ENV);
 
+const { env, logux } = config;
+
 const server = new Server(
   Server.loadOptions(process, {
-    subprotocol: '1.0.0',
-    supports: '1.x',
+    subprotocol: logux.subprotocol,
+    supports: logux.supports,
     root: __dirname,
     port: config.backPort,
   }),
@@ -15,7 +17,7 @@ const server = new Server(
 
 server.auth(({ userId, token }) => {
   // Allow only local users until we will have a proper authentication
-  return config.env === 'development';
+  return env === 'development';
 });
 
 server.listen();

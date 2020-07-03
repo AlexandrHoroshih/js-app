@@ -1364,7 +1364,16 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.1.tgz#e93c13942592cf5ef01aa8297444dc192beee52f"
   integrity sha512-Qv4LTqO11jepd5Qmlp3M1YEjBumoTHcHFdgPTQ+sFlIL5myi/7xu/POwP7IRu6odBdmLXdtIs1D6TuW6kbwbbg==
 
-"@logux/core@^0.6.1":
+"@logux/client@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@logux/client/-/client-0.9.1.tgz#890b9dcccbf2759770c3ed214bc883d2ba684b11"
+  integrity sha512-R/4JrKEe69uARwYgG/AjMIz7k05aA7BCLEflIr93ST82RIlmkTJifbdfxyjTEwoRz9Ka9kSpKmZ8VJrCoS8PbA==
+  dependencies:
+    "@logux/core" "^0.6.0"
+    nanoevents "^5.1.8"
+    nanoid "^3.1.10"
+
+"@logux/core@^0.6.0", "@logux/core@^0.6.1":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@logux/core/-/core-0.6.1.tgz#694757d4a616be6694d8a45739485934823820b9"
   integrity sha512-4gobJaTcbdVyaynmUov2sP9au2/2xD7bOVfAQrnVMhE64WXaieD6D6nDrRGVGTWFJ0m7j28Xk4UqQplb+sz97w==
@@ -1448,6 +1457,26 @@
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.2.tgz#7c6dc4ecef16149fd7a736710baa1b811017fdca"
   integrity sha512-JlGTGRYHC2QK+DDbePyXdBdooxFq2+noLfWpRqJtkxcb/oYWzOF0kcbfvvbWrwevCC1l6hLUg1wHYT+ona5BWQ==
+
+"@reatom/babel-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@reatom/babel-plugin/-/babel-plugin-1.0.0.tgz#d3657e937071dbfd10f53c6a048dadbd08917976"
+  integrity sha512-rd8JMy27tMtz3/BVt+XN0mIF3RLD4WtjWggSPgAphNu6vpT7pVA6hAHLvPl1W+c+eVx1rpAegReZm0MZjZSRNw==
+
+"@reatom/core@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@reatom/core/-/core-1.1.4.tgz#44ae4543e3a380f8fe70a927ea8b8e87b205807a"
+  integrity sha512-9x6+terJJRS44uHcxYSaTMFBOZ+6jYfl4gSpsVacBHgpSiKNvfvxtLMwt4R9LOJ5QPDPY1dw0HmUvPH5/ad2xw==
+
+"@reatom/debug@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@reatom/debug/-/debug-1.2.0.tgz#1e6d2f05b88882a47a0d59b83f88242ec3dceb55"
+  integrity sha512-Obf1rI++1CKZyp1P8HY3pCCQ5GUGrYDZn8dbMaqCzvWd6kyZDFtaf51gfdnUnLwZZ8EHFYkpwgHtvbJXSv+b3w==
+
+"@reatom/react@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@reatom/react/-/react-1.1.3.tgz#a17f1b8423ccc83ec3c9afafa6c52ed50797a8c1"
+  integrity sha512-lWKdYG4XYkkOKlWU34dZHAhwetLip+IEn5KnQk15YkNoZMxYHfUDnkap4WSlSLKzo3G6sdTVjW+2XJMGQPl/vQ==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
