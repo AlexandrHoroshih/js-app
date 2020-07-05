@@ -1,6 +1,13 @@
 {
     "presets": [
-        "next/babel",
+        [
+            "@babel/preset-env",
+            {
+              "useBuiltIns": "entry"
+            }
+        ],
+        "@babel/preset-react",
+        "@babel/preset-typescript",
         "linaria/babel"
     ],
     "plugins": ["@reatom/babel-plugin"]

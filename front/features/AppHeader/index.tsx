@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Link from 'next/link';
 import { css } from 'linaria';
 
 const header = css`
@@ -33,9 +32,7 @@ const appLogo = css`
 
 const AppLogo: React.FC = () => (
   <div className={appLogo}>
-    <Link href="/">
-      <a>App</a>
-    </Link>
+    <a>App</a>
   </div>
 );
 

@@ -1,4 +1,3 @@
-import { createStore, declareAction, declareAtom } from '@reatom/core';
 import { CrossTabClient } from '@logux/client/cross-tab-client';
 import { log, badge, badgeEn } from '@logux/client';
 
@@ -49,7 +48,7 @@ const badgeStyles = {
   },
 };
 
-export const initLoguxClient = () => {
+export const createLoguxClient = () => {
   const client = new CrossTabClient({
     subprotocol: logux.subprotocol,
     server: backUrl,
@@ -61,11 +60,5 @@ export const initLoguxClient = () => {
 
   badge(client, { messages: badgeEn, styles: badgeStyles });
 
-  client.start();
-
   return client;
-};
-
-export const initStore = () => {
-  return createStore();
 };
