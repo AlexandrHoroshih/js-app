@@ -3,6 +3,6 @@
         "next/babel",
         "linaria/babel"
     ],
-    "plugins": ["@reatom/babel-plugin"]
+    "plugins": ["effector/babel-plugin"]
 }
   
