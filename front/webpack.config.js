@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { EnvironmentPlugin } = require('webpack');
+const { EnvironmentPlugin, ProgressPlugin } = require('webpack');
 
 const config = require('../app-config');
 
@@ -18,21 +18,12 @@ module.exports = {
         use: [
           {
             loader: require.resolve('babel-loader'),
-            options: {
-              presets: ['@babel/preset-env', 'linaria/babel'],
-              plugins: ['effector/babel-plugin'],
-            },
           },
           {
             loader: require.resolve('linaria/loader'),
             options: {
               sourceMap: config.env !== 'production',
-            },
-          },
-          {
-            loader: require.resolve('babel-loader'),
-            options: {
-              presets: ['@babel/preset-typescript', '@babel/preset-react'],
+              preprocessor: 'stylis', // light-weight preprocessor, handles nesting, url(...) paths and some other stuff
             },
           },
         ],
@@ -61,7 +52,6 @@ module.exports = {
     contentBase: path.resolve(__dirname, './.build'),
     host: '0.0.0.0',
     historyApiFallback: true,
-    writeToDisk: true,
   },
   stats: { children: false },
   output: {
@@ -80,7 +70,8 @@ module.exports = {
     child_process: 'empty',
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new ProgressPlugin(),
+    !process.env.COSMOS && new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public', 'index.html'),
     }),
@@ -88,5 +79,5 @@ module.exports = {
       filename: 'styles.[contenthash].css',
     }),
     new EnvironmentPlugin(config),
-  ],
+  ].filter(Boolean),
 };

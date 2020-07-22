@@ -21,7 +21,7 @@ export const startLoguxClientFx = createEffect<StartLoguxOptions, void>(
   'init logux client',
   {
     handler: ({ withLog = false }) => {
-      if (!$logux.getState()) return; // client should be created once
+      if ($logux.getState()) return; // client should be created once
 
       const client = new CrossTabClient({
         subprotocol: logux.subprotocol,
