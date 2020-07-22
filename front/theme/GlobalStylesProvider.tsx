@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css } from 'linaria';
 import { normalize, rem } from 'polished';
-import Head from 'next/head';
 
 // about normalize.css https://necolas.github.io/normalize.css/
 // transforming polished's version of normalize.css (has type Styles[]) to object, so linaria can convert it into global styles;
@@ -128,9 +127,6 @@ export const globals = css`
 
 export const GlobalStylesProvider: React.FC = ({ children }) => (
   <>
-    <Head>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
     <>{children}</>
   </>
 );
