@@ -2,6 +2,7 @@
   "env": "{{NODE_ENV}}",
   "host": "{{HOST}}",
   "backPort": "{{BACK_PORT}}",
+  "frontPort": "{{FRONT_PORT}}",
   "backUrl": "ws://{{HOST}}:{{BACK_PORT}}",
   "db": {
     "database": "{{DB_NAME}}",

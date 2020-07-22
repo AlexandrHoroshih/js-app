@@ -52,6 +52,7 @@ module.exports = {
     contentBase: path.resolve(__dirname, './.build'),
     host: '0.0.0.0',
     historyApiFallback: true,
+    port: config.frontPort,
   },
   stats: { children: false },
   output: {
