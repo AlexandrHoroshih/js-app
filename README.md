@@ -1,6 +1,6 @@
 # js-app-playground
 
-Goal: build a playground project (spa-like app with random features) with React ([Next.js](https://nextjs.org/)) at the frontend and Node.js at the backend
+Goal: build a playground project (spa-like app with random features) with React at the frontend and Node.js at the backend
 and then rewrite frontend with [Svelte](https://svelte.dev/) or other framework.
 
 It means using stuff and writing frontend code as less coupled to React as possible to be able to reuse it later.
