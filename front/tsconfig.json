@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
     "target": "es2019",
-    "lib": ["DOM", "ES2019"],
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
     "strictNullChecks": true,
     "skipLibCheck": true,
     "jsx": "react",
     "noImplicitThis": true,
+    "importsNotUsedAsValues": "preserve",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
     "baseUrl": "."
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

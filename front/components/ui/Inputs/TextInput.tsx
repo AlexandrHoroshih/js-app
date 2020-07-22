@@ -3,6 +3,7 @@ import { css, cx } from 'linaria';
 import { rem } from 'polished';
 
 import { getColoredShadow } from '../../../theme/shadow-utils';
+import { Style } from 'util';
 
 export interface TextInputCustomProps {
   className?: string;
@@ -12,9 +13,12 @@ export interface TextInputCustomProps {
   mainColor?: string;
   secondaryColor?: string;
   assistColor?: string;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  name?: string;
+  style?: CSSStyleDeclaration;
 }
 
-export type TextInputProps = TextInputCustomProps & HTMLInputElement;
+export type TextInputProps = TextInputCustomProps;
 
 const inputBase = css`
   width: max-content;
@@ -100,7 +104,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   assistText,
   name,
   label,
-  ...props
+  inputProps,
 }) => {
   const isError = errorText && errorText.length > 0;
 
@@ -118,7 +122,7 @@ export const TextInput: React.FC<TextInputProps> = ({
           {label}
         </label>
         <input
-          {...props}
+          {...inputProps}
           className={cx(inputBase, className)}
           name={name}
           id={name}

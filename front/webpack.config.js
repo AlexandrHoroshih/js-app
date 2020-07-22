@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { EnvironmentPlugin, ProgressPlugin } = require('webpack');
 
@@ -78,6 +79,14 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css',
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+      },
     }),
     new EnvironmentPlugin(config),
   ].filter(Boolean),

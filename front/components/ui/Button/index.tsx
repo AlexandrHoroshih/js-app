@@ -29,6 +29,8 @@ interface Props {
 
 type ButtonProps = ReakitButtonProps & Props;
 
+type LinkButtonProps = ButtonProps;
+
 type FabProps = ButtonProps;
 
 const buttonBase = css`
@@ -181,7 +183,7 @@ export const Fab = React.forwardRef<HTMLElement, FabProps>(
   ),
 );
 
-export const LinkButton = React.forwardRef<HTMLElement, ButtonProps>(
+export const LinkButton = React.forwardRef<HTMLElement, LinkButtonProps>(
   ({ ...props }, ref) => <Button {...props} ref={ref} as="a" />,
 );
 
