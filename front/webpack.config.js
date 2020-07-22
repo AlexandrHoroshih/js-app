@@ -8,30 +8,31 @@ const config = require('../app-config');
 
 module.exports = {
   entry: './pages/_entry.tsx',
+  context: __dirname,
   mode: config.env,
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: [/\.ts$/, /\.tsx/],
+        include: __dirname,
         use: [
           {
             loader: require.resolve('babel-loader'),
             options: {
-              presets: ['next/babel', 'linaria/babel'],
+              presets: ['@babel/preset-env', 'linaria/babel'],
               plugins: ['effector/babel-plugin'],
-            },
-          },
-          {
-            loader: require.resolve('ts-loader'),
-            options: {
-              transpileOnly: true,
-              configFile: path.resolve(__dirname, './tsconfig.json'),
             },
           },
           {
             loader: require.resolve('linaria/loader'),
             options: {
-              sourceMap: process.env.NODE_ENV !== 'production',
+              sourceMap: config.env !== 'production',
+            },
+          },
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: ['@babel/preset-typescript', '@babel/preset-react'],
             },
           },
         ],
@@ -46,7 +47,6 @@ module.exports = {
             options: {
               modules: false,
               importLoaders: 1,
-              hmr: config.env !== 'production',
             },
           },
           require.resolve('postcss-loader'),
@@ -61,12 +61,23 @@ module.exports = {
     contentBase: path.resolve(__dirname, './.build'),
     host: '0.0.0.0',
     historyApiFallback: true,
+    writeToDisk: true,
   },
   stats: { children: false },
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './.build'),
     publicPath: '/',
+  },
+  node: {
+    module: 'empty',
+    dgram: 'empty',
+    dns: 'mock',
+    fs: 'empty',
+    http2: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty',
   },
   plugins: [
     new CleanWebpackPlugin(),

@@ -5,11 +5,13 @@ import { AppLayout, AppContentWrapper } from '../features/AppLayout';
 import { startLoguxClientFx, addLoguxAction } from '../app-domain/logux';
 
 import { Button } from '../components/ui/Button';
+import { TextInput } from '../components/ui/Inputs/TextInput';
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp() {
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     startLoguxClientFx({ withLog: true });
+    console.log('logux!');
     addLoguxAction([
       { type: 'lalala', channel: 'none' },
       (action, meta) => console.log(action, meta),
@@ -20,6 +22,7 @@ export default function MyApp() {
       <AppLayout>
         <AppContentWrapper>
           bla <Button>check</Button>
+          <TextInput label="test" />
         </AppContentWrapper>
       </AppLayout>
     </CommonStylesProvider>

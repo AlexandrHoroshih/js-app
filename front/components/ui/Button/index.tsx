@@ -6,8 +6,8 @@ import {
 import { css, cx } from 'linaria';
 import { rem } from 'polished';
 
-import { getColoredShadow } from '../../../theme/shadows';
-import { makeColorSmooth, makeColorDarken } from '../../../theme/colors';
+import { getColoredShadow } from '../../../theme/shadow-utils';
+import { makeColorSmooth, makeColorDarken } from '../../../theme/color-utils';
 import { useFetchedCssVar } from '../../../utils/hooks/useFetchedCssVar';
 import { useComboRef } from '../../../utils/hooks/useComboRef';
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, cx } from 'linaria';
 import { rem } from 'polished';
 
-import { getColoredShadow } from '../../../theme/shadows';
+import { getColoredShadow } from '../../../theme/shadow-utils';
 
 export interface TextInputCustomProps {
   className?: string;

@@ -9,13 +9,9 @@ import * as s from './shadows';
 
 const colorVars = css`
   --red-base: ${c.RED_BASE};
-  --red-smooth: ${c.RED_SMOOTH};
   --blue-base: ${c.BLUE_BASE};
-  --blue-smooth: ${c.BLUE_SMOOTH};
   --yellow-base: ${c.YELLOW_BASE};
-  --yellow-smooth: ${c.YELLOW_SMOOTH};
   --green-base: ${c.GREEN_BASE};
-  --green-smooth: ${c.GREEN_SMOOTH};
 
   --black: ${c.BLACK_BASE};
   --gray: ${c.GRAY_BASE};
@@ -28,11 +24,6 @@ const shadowVars = css`
   --shadow8dp: ${s.shadow8dp};
   --shadow16dp: ${s.shadow16dp};
   --shadow24dp: ${s.shadow24dp};
-
-  --blue-shadow4dp: ${s.getColoredShadow(c.BLUE_BASE)};
-  --blue-shadow8dp: ${s.getColoredShadow(c.BLUE_BASE, 8)};
-  --blue-shadow16dp: ${s.getColoredShadow(c.BLUE_BASE, 16)};
-  --blue-shadow24dp: ${s.getColoredShadow(c.BLUE_BASE, 24)};
 `;
 
 const miscVars = css`
