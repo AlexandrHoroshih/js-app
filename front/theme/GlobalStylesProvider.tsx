@@ -1,20 +1,13 @@
 import * as React from 'react';
 import { css } from 'linaria';
-import { normalize, rem } from 'polished';
-
-// about normalize.css https://necolas.github.io/normalize.css/
-// transforming polished's version of normalize.css (has type Styles[]) to object, so linaria can convert it into global styles;
-const normalizeCss = normalize().reduce(
-  (acc, currentStylesObj) => ({ ...acc, ...currentStylesObj }),
-  {},
-);
+import { rem } from 'polished';
 
 const BASE_FONT_SIZE = 16; // intended to use with polished's "rem" function, rem's default reference ont size is 16px;
 const BASE_FONT_SIZE_MOBILE = 12;
 
 export const globals = css`
   :global() {
-    ${normalizeCss}
+    @import-normalize;
 
     html {
       box-sizing: border-box;
