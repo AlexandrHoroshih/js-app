@@ -3,7 +3,6 @@ import { css, cx } from 'linaria';
 import { rem } from 'polished';
 
 import { getColoredShadow } from '../../../theme/shadow-utils';
-import { Style } from 'util';
 
 export interface TextInputCustomProps {
   className?: string;
@@ -115,6 +114,7 @@ export const TextInput: React.FC<TextInputProps> = ({
         ['--input-main-color' as any]: mainColor,
         ['--input-sec-color' as any]: secondaryColor,
         ['--input-assist-color' as any]: assistColor,
+        ...style,
       }}
     >
       <div className={cx(inputWrapper, isError && inputError)}>
