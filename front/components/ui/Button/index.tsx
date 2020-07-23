@@ -25,6 +25,7 @@ interface Props {
   mainColor?: string;
   secondaryColor?: string;
   fullWidth?: boolean;
+  as?: any; // temporary fix for "as" prop typings issue: https://github.com/reakit/reakit/issues/649
 }
 
 type ButtonProps = ReakitButtonProps & Props;

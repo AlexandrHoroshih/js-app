@@ -14,7 +14,7 @@ export interface TextInputCustomProps {
   assistColor?: string;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   name?: string;
-  style?: CSSStyleDeclaration;
+  style?: React.CSSProperties;
 }
 
 export type TextInputProps = TextInputCustomProps;
