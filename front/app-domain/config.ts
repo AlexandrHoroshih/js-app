@@ -9,5 +9,4 @@ export const $config = createStore<CONFIG>({
   host: process.env.host,
   db: process.env.db,
   logux: process.env.logux,
-}); // taking composed env variables out of process.env - https://nextjs.org/docs/api-reference/next.config.js/environment-variables
-// the only way (that i have had figured out) to connect node-confme with next.js and have typed & composed config
+});

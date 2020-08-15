@@ -13,6 +13,7 @@
     "cosmos:export": "COSMOS=true cosmos-export"
   },
   "dependencies": {
+    "@loadable/component": "^5.13.1",
     "@logux/client": "^0.9.1",
     "effector": "^21.0.3",
     "effector-react": "^21.0.4",
@@ -21,7 +22,9 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "^5.4.1",
-    "reakit": "^1.0.0-rc.0"
+    "reakit": "^1.0.0-rc.0",
+    "router5": "^8.0.1",
+    "router5-plugin-browser": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -30,6 +33,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/loadable__component": "^5.13.0",
     "@types/node": "^13.11.0",
     "@types/react": "^16.9.32",
     "@types/react-dom": "^16.9.8",
@@ -40,6 +44,7 @@
     "commitizen": "^4.0.4",
     "css-loader": "^3.6.0",
     "cz-conventional-changelog": "^3.1.0",
+    "effector-logger": "^0.6.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.1",
